@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestApp"
+        xmlns:local="clr-namespace:TestApp"        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="1080" Width="1980"
         WindowState="Maximized"
         WindowStyle="None"
-        Background="Transparent">
+        Background="Transparent"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <Border CornerRadius="89">
         <Border.Background>
             <ImageBrush ImageSource="Assets/Images/background.png"/>
@@ -21,62 +22,16 @@
             <Button Name="Close_btn" Content="X" 
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Margin="0,0,50,0" 
-                    Click="Close_btn_Click"                     
+                    Margin="0,0,50,0"                     
+                    Command="{Binding CloseAppCommand}"
                     Style="{StaticResource closeBtn}"/>
-            
+
             <!--Лого-->
             <Image Source="Assets/Images/logo.png" Margin="0,20,0,10"/>
-                        
+            
             <!--Основной интерфейс-->
-            <Grid Grid.Row="1" Margin="0,10,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="0.75*"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Name="Tourism_btn" Grid.Column="1" Content="TOURISM" Click="Tourism_btn_Click"/>
-                <Button Name="SuezCanal_btn" Grid.Column="3" Content="SUEZ CANAL" Click="SuezCanal_btn_Click"/>
-                <Button Name="ManufactureInEgypt_btn" Grid.Column="5" Content="MANUFACTURE IN EGYPT" Click="ManufactureInEgypt_btn_Click"/>
-                <Button Name="Agriculture_btn" Grid.Column="1" Grid.Row="2" Content="AGRICULTURE" Click="Agriculture_btn_Click"/>
-                <Button Name="EgyptAir_btn" Grid.Column="3" Grid.Row="2" Content="EGYPTAIR" Click="EgyptAir_btn_Click"/>
-                <Button Name="LiveInEgypt_btn"  Grid.Column="5" Grid.Row="2" Content="LIVE IN EGYPT" Click="LiveInEgypt_btn_Click"/>
-            </Grid>
-
-            <!--Оверлей для просмотра медиа-->
-            <Grid Name="MediaGrid" Grid.RowSpan="2"  Visibility="Hidden"  Panel.ZIndex="1">
-                <Grid.Background>
-                    <SolidColorBrush Color="Black" Opacity="0.6"/>
-                </Grid.Background>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="0.2*"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="0.2*"/>
-                </Grid.ColumnDefinitions>
-                <MediaElement Grid.Row="1" Grid.Column="1" Name="Media" LoadedBehavior="Manual"/>
-                <Button Grid.Column="2" 
-                        Name="HideMedia_btn" 
-                        Click="HideMedia_btn_Click" 
-                        Style="{StaticResource closeBtn}" 
-                        Content="X"/>
-            </Grid>
+            <Frame Name="NavFrame" NavigationUIVisibility="Hidden" Source="Pages/MainPage.xaml" Grid.Row="1"/>
+                       
         </Grid>
     </Border>
 
