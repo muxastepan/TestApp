@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
-namespace TestApp
+namespace TestApp.View.Windows
 {
     public partial class MainWindow : Window
     {
@@ -18,5 +16,9 @@ namespace TestApp
             Close();
         }) ;
 
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            App.TopFrame = NavFrame;
+        }
     }
 }
